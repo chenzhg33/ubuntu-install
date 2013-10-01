@@ -2,6 +2,9 @@
 #include <string>
 #include <stack>
 #include <set>
+#include <cstdio>
+
+
 
 using namespace std;
 bool isSort(int a[], int n) {
