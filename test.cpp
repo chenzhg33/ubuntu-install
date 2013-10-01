@@ -4,7 +4,6 @@
 #include <set>
 #include <cstdio>
 
-//sdfdsf
 
 using namespace std;
 bool isSort(int a[], int n) {
