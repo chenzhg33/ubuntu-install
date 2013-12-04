@@ -1,8 +1,10 @@
 双系统安装Ubuntu教程
+
 1   首先你得分区（这个自己搞定吧），划出一个10G的盘应该够了。
 2   然后下载Easybcd，到网上搜个安装就行了，打开Easybcd。
 3   添加新条目--Neogrub---安装---配置
 4   这时会打开一个文档，把下面的内容复制在尾部再保存就行了
+
 title Install Ubuntu 12.10 LTS
 root (hd0,0)
 kernel (hd0,0)/vmlinuz boot=casper iso-scan/filename=/ubuntu-12.10-desktop-i386.iso ro quiet splash
@@ -11,8 +13,18 @@ initrd (hd0,0)/initrd.lz
 
 
 注意：ubuntu-12.10-desktop-i386.iso  这个是你的映像的名字，一定要改成你自己的映像的名字，比如我的是
+ubuntu-12.10-desktop-i386.iso
 
-4   打开Ubuntu映像找到casper文件夹，把里面的这两个文件复制到c盘根目录，同时把Ubuntu映像也复制到C盘根目录，然后重启，选择NeoGrub Bootloader ，就可以启动Ubuntu了（不过还没安装呢）
+4   打开Ubuntu映像找到casper文件夹，把里面的这两个文件复制到c盘根目录，同时把Ubuntu映像也复制到C盘根
+目录，然后重启，选择NeoGrub Bootloader ，就可以启动Ubuntu了（不过还没安装呢）
 
-5   先不要急着点击点桌面上的安装系统图标。先点击桌面左上角应用程序—附件—终端，输入sudo umount -l /isodevice后回车。这主要是为了防止安装过程中出现“无法卸载挂载点”的错误。到次可以点击桌面上的安装Ubuntu一步步按照提示选择安装了。  到了分区这一步建议选择与原系统共存。也可以选择自定义，这时你就要选择你刚才划出的那个盘了，双击后会弹出一个窗口，选择ext4格式化，再选择‘/’这个目录，其实就是根目录，下面的安装按照步骤来就ok了。
-6    安装之后修改系统启动引导项。安装完成重启后你会发现默认启动系统为Ubuntu。进入Ubuntu后点击桌  面左上角应用程序—附件—终端，输入 sudo mv /etc/grub.d/30_os-prober /etc/grub.d/06_os-prober, 会提示你输入密码，这个密码就是你安装系统时设置的密码，注意此时输入后不会出现*加密 的标志，而是直接不显示，输完后回车，接着输入 sudo update-grub  ，回车即可 ，再输入sudo gedit /boot/grub/grub.cfg   ,这时会打开一个文本，找到timeout=10；把10改成你想要的启动项等待时间
+5   先不要急着点击点桌面上的安装系统图标。先点击桌面左上角应用程序—附件—终端，输入sudo umount -l /isodevice后
+回车。这主要是为了防止安装过程中出现“无法卸载挂载点”的错误。到次可以点击桌面上的安装Ubuntu一步步按照提示选择安
+装了。  到了分区这一步建议选择与原系统共存。也可以选择自定义，这时你就要选择你刚才划出的那个盘了，双击后会弹出
+一个窗口，选择ext4格式化，再选择‘/’这个目录，其实就是根目录，下面的安装按照步骤来就ok了。
+
+6    安装之后修改系统启动引导项。安装完成重启后你会发现默认启动系统为Ubuntu。进入Ubuntu后点击桌面左上角应用程序
+—附件—终端，输入 sudo mv /etc/grub.d/30_os-prober /etc/grub.d/06_os-prober, 会提示你输入密码，这个密码就是你安装
+系统时设置的密码，注意此时输入后不会出现*加密 的标志，而是直接不显示，输完后回车，接着输入 sudo update-grub  ，
+回车即可 ，再输入sudo gedit /boot/grub/grub.cfg   ,这时会打开一个文本，找到timeout=10；把10改成你想要的启动项等
+待时间
